@@ -27,7 +27,7 @@ public class MT4 {
         try {
             Key.class.getConstructor(int.class, String.class);
         } catch (NoSuchMethodException e) {
-            assertFalse(true, "Key should have a constructor that takes an int and a String");
+            fail("Key should have a constructor that takes an int and a String");
         }
     }
 
@@ -36,13 +36,13 @@ public class MT4 {
         try {
             Door.class.getConstructor();
         } catch (NoSuchMethodException e) {
-            assertFalse(true, "Door should have a constructor that takes a boolean and an int");
+            fail("Door should have a constructor that takes a boolean and an int");
         }
 
         try {
             Door.class.getConstructor(boolean.class, int.class);
         } catch (NoSuchMethodException e) {
-            assertFalse(true, "Door should have a constructor that takes a boolean and an int");
+            fail("Door should have a constructor that takes a boolean and an int");
         }
     }
 

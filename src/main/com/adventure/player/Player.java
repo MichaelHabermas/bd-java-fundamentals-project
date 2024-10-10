@@ -6,14 +6,18 @@ import main.com.adventure.world.objects.Tangible;
 import main.com.adventure.world.objects.Weapon;
 import main.com.adventure.world.objects.keys.Key;
 
+import java.util.Objects;
+
 public class Player {
 
+    public String name;
     public int level = 5;
     private int currentLocationIndex = AppSettings.getStartingLocation();
     private Key key;
     private Shovel shovel;
     private int power = 1;
     private int health = 10;
+    private final Backpack backpack = new Backpack();
 
     /**
      * Sprint 1 Module 3
@@ -22,7 +26,8 @@ public class Player {
      * @param newName - the player's name that will be saved
      */
     public void setName(String newName) {
-
+        this.name = newName;
+        System.out.println("Your name is now " + this.name);
     }
 
     /**
@@ -32,7 +37,7 @@ public class Player {
      * @return The name of the player
      */
     public String getName() {
-        return "";
+        return this.name;
     }
 
     /**
@@ -42,7 +47,7 @@ public class Player {
      * @return true if the player's level is enough to open the door.
      */
     public boolean canOpenDoor() {
-        return false;
+        return this.level / 2.0 > 2;
     }
 
 
@@ -68,9 +73,18 @@ public class Player {
      * @return true if the move is executed. Otherwise, false.
      */
     public boolean move(String direction, boolean isValidDirection) {
-        return true;
+        if (isValidDirection) {
+            if (Objects.equals(direction, "EAST")) {
+                this.currentLocationIndex++;
+                return true;
+            } else if (Objects.equals(direction, "WEST")) {
+                this.currentLocationIndex--;
+                return true;
+            }
+        }
+        System.out.println(direction + " is not a valid direction");
+        return false;
     }
-
     /**
      * Sprint 3 Module 1
      * Will increase the players power to the power of the item that is passed in.
@@ -78,7 +92,7 @@ public class Player {
      * @param item - the weapon that will be used to adjust the player's power.
      */
     public void setWeapon(Weapon item) {
-        //TODO Complete this function in Sprint 3 Module 1
+        this.power = item.getPower();
     }
 
     /**
@@ -88,8 +102,7 @@ public class Player {
      * @return the item or null if the item does not exist
      */
     public Tangible getItem(String itemName) {
-        //TODO Complete this function in Sprint 3 Module 2
-        return null;
+        return backpack.getItem(itemName);
     }
 
     /**
@@ -99,8 +112,7 @@ public class Player {
      * @return the removed item
      */
     public Tangible removeItem(Tangible item) {
-        //TODO Complete this function in Sprint 3 Module 2
-        return null;
+        return backpack.removeItem(item) ? item : null;
     }
 
     /**
@@ -108,7 +120,7 @@ public class Player {
      * Prints the backpack's inventory.
      */
     public void printItems() {
-        //TODO Complete this function in Sprint 3 Module 2
+        backpack.printItems();
     }
 
     /**
@@ -117,7 +129,7 @@ public class Player {
      * @param item - item to add.
      */
     public void addItem(Tangible item) {
-        //TODO Complete this function
+        backpack.addItem(item);
     }
 
     public void setKey(Key item) {

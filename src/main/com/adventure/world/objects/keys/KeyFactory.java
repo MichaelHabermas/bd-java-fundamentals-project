@@ -10,7 +10,6 @@ public class KeyFactory {
      */
     public static Key buildKey(int level, String name) {
         //TODO Pass level and name into the key constructor when the proper constructor is built
-        Key key = new Key();
-        return key;
+        return new Key(level, name);
     }
 }

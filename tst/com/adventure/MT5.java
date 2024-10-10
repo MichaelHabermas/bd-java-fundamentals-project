@@ -29,19 +29,19 @@ public class MT5 {
         DigEscapeScene scene = new DigEscapeScene();
         
         assertNotNull(scene.getItem("shovel"));
-        assertNull(scene.getItem("key")); //null until the hole is dug
+        assertNull(scene.getItem("key")); // null until the hole is dug
         assertNotNull(scene.getItem("door"));
 
         scene.dig();
         assertNotNull(scene.getItem("key"));
         Key key = (Key) scene.getItem("key");
         scene.removeItem(key);
-        assertNull(scene.getItem("key")); //null until the hole is dug
+        assertNull(scene.getItem("key")); // null until the hole is dug
 
         Door door = (Door) scene.getItem("door");
         door.useItem(key);
         assertTrue(door.isOpen());
 
-        assertEquals(new ArrayList(List.of(Direction.EAST)), scene.getPossibleDirections());
+        assertEquals(new ArrayList<>(List.of(Direction.EAST)), scene.getPossibleDirections());
     }
 }

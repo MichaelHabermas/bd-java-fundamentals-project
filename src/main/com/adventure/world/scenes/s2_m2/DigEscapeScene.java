@@ -13,9 +13,9 @@ import java.util.List;
 
 public class DigEscapeScene implements Scene {
 
-    private Door door = new Door();
+    private final Door door = new Door();
     private Key key = new Key();
-    private Hole hole = new Hole(key);
+    private final Hole hole = new Hole(key);
     private Shovel shovel = new Shovel();
 
     @Override
@@ -33,7 +33,7 @@ public class DigEscapeScene implements Scene {
     @Override
     public List<String> getPossibleDirections() {
         if (door.isOpen()) {
-            return new ArrayList(List.of(Direction.EAST));
+            return new ArrayList<>(List.of(Direction.EAST));
         } else {
             return new ArrayList<>();
         }

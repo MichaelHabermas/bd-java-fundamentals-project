@@ -3,7 +3,7 @@ package main.com.adventure.settings;
 public class AppSettings {
 
     /** You will update this property for each project. **/
-    public static final Story story = Story.Invalid_Beginning;
+    public static final Story story = Story.MT8;
 
     public enum Story {
         TestScene,
@@ -36,18 +36,10 @@ public class AppSettings {
      * @return the starting location (defaults to 0)
      */
     public static int getStartingLocation() {
-        int startingLocation = 0;
-        switch (story) {
-            case MT3_TestDirections:
-            case MT4_HouseAndCave:
-            case MT6_TestDirections:
-                startingLocation = 1;
-                break;
-            default:
-                startingLocation = 0;
-                break;
-        }
-        return startingLocation;
+        return switch (story) {
+            case MT3_TestDirections, MT4_HouseAndCave, MT6_TestDirections -> 1;
+            default -> 0;
+        };
     }
 
 }

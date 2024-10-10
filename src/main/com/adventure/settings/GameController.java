@@ -122,19 +122,19 @@ public class GameController {
     }
 
     private void applyCommand(Command command) {
-        if (command.getVerb().equalsIgnoreCase(CommandConstants.LOOK)) {
+        if (command.getVerb() == CommandVerb.LOOK) {
             describeCurrentScene();
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.MOVE)) {
+        } else if (command.getVerb() == CommandVerb.MOVE) {
             move(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.HELP)) {
+        } else if (command.getVerb() == CommandVerb.HELP) {
             printHelp();
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.USE)) {
+        } else if (command.getVerb() == CommandVerb.USE) {
             use(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.DIG)) {
+        } else if (command.getVerb() == CommandVerb.DIG) {
             dig();
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.EXAMINE)) {
+        } else if (command.getVerb() == CommandVerb.EXAMINE) {
             examine(command.getObjectName());
-        } else if (command.getVerb().equalsIgnoreCase(CommandConstants.TAKE)) {
+        } else if (command.getVerb() == CommandVerb.TAKE) {
             take(command.getObjectName());
         } else {
             printInvalidCommand();

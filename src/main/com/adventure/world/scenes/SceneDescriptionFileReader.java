@@ -38,8 +38,18 @@ public class SceneDescriptionFileReader {
      */
 
     private String produceTextFromBufferedReader(BufferedReader br) throws IOException {
-        //remove this line
-        throw new IOException();
+        StringBuilder val = new StringBuilder();
+
+        while (true) {
+            String nextLine = br.readLine();
+
+            if (nextLine != null) {
+                val.append(nextLine).append("\n");
+            } else {
+                break;
+            }
+        }
+        return val.toString();
     }
 
     ////// DO NOT CHANGE ANYTHING BELOW THIS LINE /////

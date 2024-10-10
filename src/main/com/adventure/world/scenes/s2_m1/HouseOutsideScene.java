@@ -15,8 +15,7 @@ public class HouseOutsideScene implements Scene {
 
     @Override
     public String getDescription() {
-        String description = "You come up to a house. It has no windows on the bottom floor, but there is a door.";
-        return description;
+        return "You come up to a house. It has no windows on the bottom floor, but there is a door.";
     }
 
     @Override

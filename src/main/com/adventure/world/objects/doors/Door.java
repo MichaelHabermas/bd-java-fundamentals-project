@@ -18,16 +18,23 @@ public class Door implements Tangible {
     private boolean isOpen = false;
 
     //TODO Add a level property
+    int level;
 
     //TODO Add a default (i.e. no params) constructor here
+    public Door() {}
 
     //TODO Add a constructor that takes an isOpen and level and saves both
+    public Door(boolean isOpen, int level) {
+        this.isOpen = isOpen;
+        this.level = level;
+    }
 
     private boolean isKeyValid(Key key) {
         //TODO Update doorLevel so it references the level of this door
-        int doorLevel = -1;
-
-        return key != null && key.getLevel() == doorLevel;
+        int doorLevel = this.level;
+        System.out.println("key: " + key.getLevel());
+        System.out.println("doorLevel: " + doorLevel);
+        return key != null && key.getLevel() >= doorLevel;
     }
 
     public boolean isOpen() {
@@ -62,10 +69,7 @@ public class Door implements Tangible {
     @Override
     public Boolean canUse(Tangible item) {
         Key key = (Key) item;
-        if (isKeyValid(key)) {
-            return true;
-        }
-        return false;
+        return isKeyValid(key);
     }
 
     @Override
